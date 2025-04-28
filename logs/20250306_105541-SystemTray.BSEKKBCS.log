@@ -1,0 +1,44 @@
+2025-03-06 10:55:46.684 : [Warning] --- : Heartbeat fail : Exception was thrown for request method "HeartBeat" in "IDlpAgentAct(1.0)" on https://127.0.0.1:47102/ > The SSL connection could not be established, see inner exception. > Authentication failed, see inner exception. > İstenen güvenlik paketi yok 
+Source: SmartRest.Client
+Type: SmartRest.Client.Helpers.SmartRestException
+Message: [-[ Exception was thrown for request method "HeartBeat" in "IDlpAgentAct(1.0)" on https://127.0.0.1:47102/ ]-]
+Stack trace:    at SmartRest.Client.SmartRestClient.endCall[TResult](String method, String methodParent, MultipartContent multiContent, Boolean ignoreAssemblyVersions, Uri remoteApi, CancellationToken cancellationToken, JObject extraParameters, Boolean ignoreArgumentsMatching, Int64 approximateContentLength)
+   at SmartRest.Client.SmartRestClient.CallRemoteInterfaceMethod[TResult](RemoteInterfaceMethodArgs remoteCallArgs)
+   at DLPAgent.SystemTray.DlpAgentHelper.executeRemoteMethod[TResult](Func`2 remoteCall, Int32 timeoutMs) in C:\cdlp\cdlp\agents\modules\DLPAgent.SystemTray\[*[ DlpAgentHelper.cs:line 153 ]*]
+   at DLPAgent.SystemTray.DlpAgentHelper.heartBeatTimer_tick(CancellationToken ct) in C:\cdlp\cdlp\agents\modules\DLPAgent.SystemTray\[*[ DlpAgentHelper.cs:line 190 ]*]
+
+Source: System.Net.Http
+Type: System.Net.Http.HttpRequestException
+Message: [-[ The SSL connection could not be established, see inner exception. ]-]
+Stack trace:    at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at SmartRest.Client.SmartRestClient.endCall[TResult](String method, String methodParent, MultipartContent multiContent, Boolean ignoreAssemblyVersions, Uri remoteApi, CancellationToken cancellationToken, JObject extraParameters, Boolean ignoreArgumentsMatching, Int64 approximateContentLength)
+
+Source: System.Net.Security
+Type: System.Security.Authentication.AuthenticationException
+Message: [-[ Authentication failed, see inner exception. ]-]
+Stack trace:    at System.Net.Security.SslStreamPal.AcquireCredentialsHandle(SslAuthenticationOptions sslAuthenticationOptions, Boolean newCredentialsRequested)
+   at System.Net.Security.SslStream.AcquireCredentialsHandle(SslAuthenticationOptions sslAuthenticationOptions, Boolean newCredentialsRequested)
+   at System.Net.Security.SslStream.AcquireClientCredentials(Byte[]& thumbPrint, Boolean newCredentialsRequested)
+   at System.Net.Security.SslStream.GenerateToken(ReadOnlySpan`1 inputBuffer, Byte[]& output)
+   at System.Net.Security.SslStream.NextMessage(ReadOnlySpan`1 incomingBuffer, ProtocolToken& token)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.EstablishSslConnectionAsync(SslClientAuthenticationOptions sslOptions, HttpRequestMessage request, Boolean async, Stream stream, CancellationToken cancellationToken)
+
+Source: System.Net.Security
+Type: System.ComponentModel.Win32Exception
+Message: [-[ İstenen güvenlik paketi yok ]-]
+Stack trace:    at System.Net.SSPIWrapper.AcquireCredentialsHandle(ISSPIInterface secModule, String package, CredentialUse intent, SCH_CREDENTIALS* scc)
+   at System.Net.Security.SslStreamPal.AcquireCredentialsHandle(CredentialUse credUsage, SCH_CREDENTIALS* secureCredential)
+   at System.Net.Security.SslStreamPal.AcquireCredentialsHandleSchCredentials(SslAuthenticationOptions authOptions)
+   at System.Net.Security.SslStreamPal.AcquireCredentialsHandle(SslAuthenticationOptions sslAuthenticationOptions, Boolean newCredentialsRequested)
+====================================================
+
+2025-03-06 10:55:52.164 : [Info] smartrest_started : SmartRest started on https://127.0.0.1:11001 (DLPAgent.SystemTray-SystemTray.BSEKKBCS) 

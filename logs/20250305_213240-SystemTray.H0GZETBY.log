@@ -1,0 +1,26 @@
+2025-03-05 21:32:41.104 : [Info] smartrest_started : SmartRest started on https://127.0.0.1:11001 (DLPAgent.SystemTray-SystemTray.H0GZETBY) 
+2025-03-06 07:41:40.014 : [Warning] --- : Heartbeat fail : Exception was thrown for request method "HeartBeat" in "IDlpAgentAct(1.0)" on https://127.0.0.1:47102/ > An error occurred while sending the request. > The response ended prematurely. (ResponseEnded) 
+Source: SmartRest.Client
+Type: SmartRest.Client.Helpers.SmartRestException
+Message: [-[ Exception was thrown for request method "HeartBeat" in "IDlpAgentAct(1.0)" on https://127.0.0.1:47102/ ]-]
+Stack trace:    at SmartRest.Client.SmartRestClient.endCall[TResult](String method, String methodParent, MultipartContent multiContent, Boolean ignoreAssemblyVersions, Uri remoteApi, CancellationToken cancellationToken, JObject extraParameters, Boolean ignoreArgumentsMatching, Int64 approximateContentLength)
+   at SmartRest.Client.SmartRestClient.CallRemoteInterfaceMethod[TResult](RemoteInterfaceMethodArgs remoteCallArgs)
+   at DLPAgent.SystemTray.DlpAgentHelper.executeRemoteMethod[TResult](Func`2 remoteCall, Int32 timeoutMs) in C:\cdlp\cdlp\agents\modules\DLPAgent.SystemTray\[*[ DlpAgentHelper.cs:line 153 ]*]
+   at DLPAgent.SystemTray.DlpAgentHelper.heartBeatTimer_tick(CancellationToken ct) in C:\cdlp\cdlp\agents\modules\DLPAgent.SystemTray\[*[ DlpAgentHelper.cs:line 190 ]*]
+
+Source: System.Net.Http
+Type: System.Net.Http.HttpRequestException
+Message: [-[ An error occurred while sending the request. ]-]
+Stack trace:    at System.Net.Http.HttpConnection.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at SmartRest.Client.SmartRestClient.endCall[TResult](String method, String methodParent, MultipartContent multiContent, Boolean ignoreAssemblyVersions, Uri remoteApi, CancellationToken cancellationToken, JObject extraParameters, Boolean ignoreArgumentsMatching, Int64 approximateContentLength)
+
+Source: System.Net.Http
+Type: System.Net.Http.HttpIOException
+Message: [-[ The response ended prematurely. (ResponseEnded) ]-]
+Stack trace:    at System.Net.Http.HttpConnection.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+====================================================
+
